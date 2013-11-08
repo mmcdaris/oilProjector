@@ -1,5 +1,5 @@
-require "teampt"
+require "oil.rb"
 
 use Rack::Reloader, 0
 
-run TeamPt.new
+run Oil.new

@@ -2,16 +2,17 @@ int image_count;
 String[] files;
 PImage[] images;
 
-String get_oil() {
-  String oil_count = "";
-  String lines[] = loadStrings("http://processing.org/about/index.html");
+void get_oil() {
+  String oil_count = "asdads";
+  String lines[] = loadStrings("http://www.worldometers.info");
   println("there are " + lines.length + " lines");
   for (int i = 0 ; i < lines.length; i++) {
+    println(lines[i]);
   }
-  return oil_count; 
 }
 
 void setup() {
+  get_oil();
   background(0);
   frameRate(10);
   size(1000, 800); 
@@ -28,4 +29,3 @@ void setup() {
 void draw() {
   image(images[int(random(image_count))], random(300), random(300)); 
 }
-

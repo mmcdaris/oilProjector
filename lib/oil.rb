@@ -1,14 +1,13 @@
-require "erb"
+require 'watir-webdriver'
 
-class Oil
-  
-  def call(env)
-    Rack::Response.new(render("index.html.erb"))
-  end
-
-  def render(template)
-    path = File.expand_path("../../views/#{template}", __FILE__)
-    ERB.new(File.read(path)).result(binding)
-  end 
-
+barrels = nil
+b = Watir::Browser.new
+b.goto "http://www.worldometers.info/"
+texts = b.text.split("\n")
+texts.each_with_index do |line, index|
+  if line.include?("Oil left \(barrels\)")  
+    barrels = texts[(index-1)].gsub!(",", "").to_i
+  end  
 end
+
+
